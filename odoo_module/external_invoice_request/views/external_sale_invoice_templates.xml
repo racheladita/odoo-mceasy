@@ -1,0 +1,12 @@
+<odoo>
+  <template id="external_sale_invoice_template" name="External Sale Invoice Page">
+    <t t-call="web.layout">
+      <div id="wrap" class="container mt-5">
+        <h2 class="text-center mb-4">External Invoice Request</h2>
+        <div id="external_sale_invoice"></div>
+      </div>
+
+      <!-- <script type="module" src="/external_invoice_request/static/src/js/external_sale_invoice_form.js"></script> -->
+    </t>
+  </template>
+</odoo>
