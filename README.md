@@ -213,3 +213,31 @@ services:
 volumes:
   odoo-db-data:
 ```
+
+---
+
+## Screenshot of the Program
+
+1. OWL External Invoice Request (without login to Odoo)
+<img width="1122" height="759" alt="Screenshot 2025-10-28 at 07 53 09" src="https://github.com/user-attachments/assets/d6fea6a9-3941-4a79-b8f0-267eb8134371" />
+<img width="1124" height="760" alt="Screenshot 2025-10-28 at 08 01 39" src="https://github.com/user-attachments/assets/02045c3e-1d4e-41c9-b8d6-e531bb80bf82" />
+<img width="1124" height="762" alt="Screenshot 2025-10-28 at 08 01 58" src="https://github.com/user-attachments/assets/901dbf1f-fcec-4429-a42f-a1e97e32bf17" />
+<img width="1123" height="764" alt="Screenshot 2025-10-28 at 08 02 21" src="https://github.com/user-attachments/assets/0482bd39-0bc0-4291-b4a5-076a12c461da" />
+<img width="1123" height="761" alt="Screenshot 2025-10-28 at 08 19 25" src="https://github.com/user-attachments/assets/fe32eda0-d925-43ca-91fa-593099061252" />
+
+2. Client Backend
+   1. Create Sales Order
+      <img width="1124" height="765" alt="Screenshot 2025-10-28 at 08 03 56" src="https://github.com/user-attachments/assets/fd226605-28f5-4162-835c-1f0b584b969e" />
+   2. Update Sales Order
+      <img width="1125" height="767" alt="Screenshot 2025-10-28 at 08 05 41" src="https://github.com/user-attachments/assets/551d87da-3c84-4248-8ce3-d48d543bcb79" />
+   3. Get list Sales Order
+      <img width="1122" height="764" alt="Screenshot 2025-10-28 at 08 06 57" src="https://github.com/user-attachments/assets/4673fecf-f667-4f5d-bfe0-db4afdd12bd0" />
+   4. Get Sales Order detail
+      <img width="1122" height="761" alt="Screenshot 2025-10-28 at 08 09 39" src="https://github.com/user-attachments/assets/c73d5217-3e70-4b7c-901b-fd7bf0e07d8e" />
+   5. Confirm Sales Order
+      <img width="1123" height="761" alt="Screenshot 2025-10-28 at 08 11 33" src="https://github.com/user-attachments/assets/892ae092-7309-4fe0-8e3a-6165fb4207de" />
+   6. Cancel Sales Order
+      <img width="1120" height="753" alt="Screenshot 2025-10-28 at 08 13 40" src="https://github.com/user-attachments/assets/8d5004fa-4215-4221-9e87-2277924e4d0d" />
+   7. Reset Sales Order (set to draft)
+      <img width="1121" height="760" alt="Screenshot 2025-10-28 at 08 15 31" src="https://github.com/user-attachments/assets/1745b233-4c42-42ee-9ce9-b9b5e05f1361" />
+
