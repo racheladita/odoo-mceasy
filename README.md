@@ -219,13 +219,22 @@ volumes:
 ## Screenshot of the Program
 
 1. OWL External Invoice Request (without login to Odoo)
-<img width="1122" height="759" alt="Screenshot 2025-10-28 at 07 53 09" src="https://github.com/user-attachments/assets/d6fea6a9-3941-4a79-b8f0-267eb8134371" />
-<img width="1124" height="760" alt="Screenshot 2025-10-28 at 08 01 39" src="https://github.com/user-attachments/assets/02045c3e-1d4e-41c9-b8d6-e531bb80bf82" />
-<img width="1124" height="762" alt="Screenshot 2025-10-28 at 08 01 58" src="https://github.com/user-attachments/assets/901dbf1f-fcec-4429-a42f-a1e97e32bf17" />
-<img width="1123" height="764" alt="Screenshot 2025-10-28 at 08 02 21" src="https://github.com/user-attachments/assets/0482bd39-0bc0-4291-b4a5-076a12c461da" />
-<img width="1123" height="761" alt="Screenshot 2025-10-28 at 08 19 25" src="https://github.com/user-attachments/assets/fe32eda0-d925-43ca-91fa-593099061252" />
+   UI OWL :
+   <img width="1122" height="759" alt="Screenshot 2025-10-28 at 07 53 09" src="https://github.com/user-attachments/assets/d6fea6a9-3941-4a79-b8f0-267eb8134371" />
+  
+   <img width="1124" height="760" alt="Screenshot 2025-10-28 at 08 01 39" src="https://github.com/user-attachments/assets/02045c3e-1d4e-41c9-b8d6-e531bb80bf82" />
+   <img width="1123" height="764" alt="Screenshot 2025-10-28 at 08 02 21" src="https://github.com/user-attachments/assets/0482bd39-0bc0-4291-b4a5-076a12c461da" />
+  
+   Cron Job :
+   <img width="1124" height="762" alt="Screenshot 2025-10-28 at 08 01 58" src="https://github.com/user-attachments/assets/901dbf1f-fcec-4429-a42f-a1e97e32bf17" />
+  
+   Auto Generate External Token :
+   <img width="1123" height="761" alt="Screenshot 2025-10-28 at 08 19 25" src="https://github.com/user-attachments/assets/fe32eda0-d925-43ca-91fa-593099061252" />
 
-2. Client Backend
+   P.S. :
+   Sorry, due to my limitations with Odoo OWL, I am still unable to create a proper UI, and the 'Request Invoice' and 'Download PDF' buttons are not yet integrated. They can only be used through Postman, cURL, or by accessing the API directly via a web browser.
+
+3. Client Backend
    1. Create Sales Order
       <img width="1124" height="765" alt="Screenshot 2025-10-28 at 08 03 56" src="https://github.com/user-attachments/assets/fd226605-28f5-4162-835c-1f0b584b969e" />
    2. Update Sales Order
