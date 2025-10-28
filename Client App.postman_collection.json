@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "2e499d74-a11e-4ea0-b482-6c3bf96177bf",
+		"name": "Client App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49564879",
+		"_collection_link": "https://aditaputri027-3351799.postman.co/workspace/Default-workspace~de615c36-ba75-4f66-b270-da6b119f3014/collection/49564879-2e499d74-a11e-4ea0-b482-6c3bf96177bf?action=share&source=collection_link&creator=49564879"
+	},
+	"item": [
+		{
+			"name": "Create Sales Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"partner_id\": 26,\n  \"order_lines\": [\n    { \"product_id\": 15, \"qty\": 2, \"price_unit\": 10.0 },\n    { \"product_id\": 29, \"qty\": 1, \"price_unit\": 20.0 }\n  ]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/so/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"so",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Sales Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"vals\": {\n    \"note\": \"Updated by XML-RPC client\"\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/so/21/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"so",
+						"21",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get List Sales Order",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/so/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"so",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Detail Sales Order",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/so/21",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"so",
+						"21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm Sales Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/so/89/action_confirm",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"so",
+						"89",
+						"action_confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Sales Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/so/88/action_cancel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"so",
+						"88",
+						"action_cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Sales Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/so/88/action_reset",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"so",
+						"88",
+						"action_reset"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
