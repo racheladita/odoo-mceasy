@@ -37,3 +37,141 @@ docker compose up --build
 2. Create a new database.
 3. Install Contacts, Sales, and Accounting modules.
 4. Update Apps List and install OWL External Invoice Request.
+
+---
+
+## Client Backend
+
+The client backend runs separately (default port 5000). It allows user to :
+1. Creating SO via API.
+2. Update SO via API.
+3. Get list SO via API.
+4. Get SO detail via API.
+5. Confirm SO via API.
+6. Cancel SO via API.
+7. Reset SO (set to draft) via API.
+
+Accessible at http://localhost:5000
+
+---
+
+## Odoo Endpoints
+
+1. Get Partner Sale Orders
+   URL
+   ```bash
+   GET http://localhost:8069/external/sale-invoice/d937872e-81aa-4f4a-adf5-501928f32e1d
+   ```
+   Response Example:
+   ```bash
+   {
+    "partner": "Brandon Freeman",
+    "sale_orders": [
+      {
+        "id": 21,
+        "name": "S00021",
+        "amount_total": 99.9,
+        "date_order": "2025-10-27 10:58:16"
+      }
+    ]
+   }
+   ```
+   
+2. Request Invoice
+   URL
+   ```bash
+   POST http://localhost:8069/external/request-invoice
+   ```
+   Headers:
+   ```bash
+   Content-Type: application/json
+   ```
+   Payload Example:
+   ```bash
+   {
+      "token": "<partner_token>",
+      "sale_order_id": 21
+   }
+   ```
+   Response Example:
+   ```bash
+   {
+      "status": "pending",
+      "message": "Invoice request created successfully. Awaiting approval."
+   }
+   ```
+
+3. Get Invoice Status
+   URL
+   ```bash
+   GET http://localhost:8069/external/invoice-status/d937872e-81aa-4f4a-adf5-501928f32e1d
+   ```
+   Response Example:
+   ```bash
+   {
+      "partner": "Brandon Freeman",
+      "invoice_requests": [
+        {
+          "sale_order": "S00021",
+          "status": "approved",
+          "invoice_id": 10,
+          "invoice_name": "INV/2025/10"
+        }
+      ]
+   }
+   ```
+
+4. Download Invoice PDF
+   URL
+   ```bash
+   GET http://localhost:8069/external/download-invoice/d937872e-81aa-4f4a-adf5-501928f32e1d/49
+   ```
+   Returns a PDF file for download
+
+---
+
+## Client Backend Endpoint
+
+1. Create Sales Order
+   URL
+   ```bash
+   POST http://localhost:5000/so/create
+   ```
+   Headers:
+   ```bash
+   Content-Type: application/json
+   ```
+   Payload Example:
+   ```bash
+   {
+      "partner_id": 4,
+      "order_lines": [
+        {
+          "product_id": 1,
+          "qty": 1,
+          "price_unit": 100
+        }
+      ]
+   }
+   ```
+   Response Example:
+   ```bash
+   {
+      "success": true,
+      "sale_order_id": 21
+   }
+   ```
+
+Testing via Postman :
+1. Open Postman.
+2. Select the method (GET or POST).
+3. Enter URL with the correct IDs.
+4. For POST, select Body → raw → JSON and paste payload.
+5. Send request → check response.
+
+---
+
+## Docker Compose File
+```bash
+
+```
