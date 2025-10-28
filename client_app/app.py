@@ -22,28 +22,54 @@ def create_so():
     data = request.json or {}
     uid, models = auth()
     
+    # Ensure partner_id exists
+    partner_id = int(data.get('partner_id'))
+    partner = models.execute_kw(DB, uid, PASS, 'res.partner', 'read', [[partner_id], {'fields': ['name']}])
+    if not partner:
+        return jsonify({'error': f'Partner {partner_id} not found'}), 400
+    
     vals = {
-        'partner_id': int(data.get('partner_id')),
+        'partner_id': partner_id,
         'order_line': []
     }
+
+    product_ids = [line['product_id'] for line in data.get('order_lines', [])]
+    if not product_ids:
+        return jsonify({'error': 'No order lines provided'}), 400
+    
+    products = models.execute_kw(
+        DB, uid, PASS,
+        'product.product', 'read',
+        [product_ids],
+        {'fields': ['name', 'uom_id', 'sale_ok']}
+    )
+    product_map = {p['id']: p for p in products}
+
+    # Build order lines
     for line in data.get('order_lines', []):
-        product = models.execute_kw(DB, uid, PASS, 'product.product', 'read', [[line['product_id']], {'fields': ['name','uom_id','sale_ok']}])[0]
-        
-        if not product['sale_ok']:
-            continue 
-        
+        product = product_map.get(line['product_id'])
+        if not product or not product['sale_ok']:
+            continue  # skip invalid or non-saleable products
+
         vals['order_line'].append((0, 0, {
-            'product_id': line['product_id'],
+            'product_id': product['id'],
             'product_uom_qty': float(line.get('qty', 1)),
             'price_unit': float(line.get('price_unit', 0)),
-            'product_uom': product['uom_id'][0],
+            'product_uom': product['uom_id'][0],  
             'name': product['name'],
-            'tax_id': [(6, 0, [])],  
+            'tax_id': [(6, 0, [])], 
         }))
 
+    if not vals['order_line']:
+        return jsonify({'error': 'No valid order lines to create'}), 400
 
-    so_id = models.execute_kw(DB, uid, PASS, 'sale.order', 'create', [vals])
-    return jsonify({'so_id': so_id})
+    # Create sale order
+    try:
+        so_id = models.execute_kw(DB, uid, PASS, 'sale.order', 'create', [vals])
+        return jsonify({'so_id': so_id})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 
 @app.route('/so/<int:so_id>/update', methods=['POST'])
 def update_so(so_id):

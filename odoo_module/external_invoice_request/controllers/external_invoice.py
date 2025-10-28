@@ -5,17 +5,7 @@ import json
 class ExternalSaleInvoiceController(http.Controller):
     # GET endpoint to view the list of sale orders that can be invoiced
     @http.route(['/external/sale-invoice/<string:external_token>'], type='http', auth='public', website=True)
-    def external_sale_invoice(self, external_token, **kwargs):
-        partner = request.env['res.partner'].sudo().search([('external_token', '=', external_token)], limit=1)
-        if not partner:
-            return request.make_response("Invalid token", status=404)
-
-        return request.render('external_invoice_request.external_sale_invoice_template', {
-            'partner_token': external_token
-        })
-
-    @http.route(['/external/sale-invoice-data/<string:external_token>'], type='http', auth='public', website=True)
-    def external_sale_invoice_data(self, external_token, **kwargs):
+    def sale_invoice_data(self, external_token, **kwargs):
         partner = request.env['res.partner'].sudo().search([('external_token', '=', external_token)], limit=1)
         if not partner:
             return request.make_response("Invalid token", status=404)
@@ -40,6 +30,7 @@ class ExternalSaleInvoiceController(http.Controller):
             'partner': partner.name,
             'sale_orders': data
         })
+    
     # POST endpoint to create invoice request
     @http.route(['/external/request-invoice'], type='json', auth='public', csrf=False, methods=['POST'])
     def request_invoice(self, **kwargs):
@@ -114,4 +105,12 @@ class ExternalSaleInvoiceController(http.Controller):
             ('Content-Disposition', f'attachment; filename={filename}')
         ])
 
+    # Render QWeb page that mounts the OWL standalone app
+    @http.route(['/external/sale-invoice-page/<string:token>'], type='http', auth='public', website=True)
+    def sale_invoice_page(self, token, **kwargs):
+        session_info = request.env['ir.http'].get_frontend_session_info()
+        return request.render('external_invoice_request.external_sale_invoice_page', {
+            'session_info': session_info,
+            'token': token,
+        })
 

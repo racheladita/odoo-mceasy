@@ -16,8 +16,11 @@
         'views/external_sale_invoice_templates.xml',
     ],
     'assets': {
-        'web.assets_frontend': [
-            'external_invoice_request/static/src/js/external_sale_invoice_form.js',
+        'external_invoice_request.assets_standalone_app': [
+            ('include', 'web._assets_helpers'),
+            ('include', 'web._assets_bootstrap'),
+            ('include', 'web._assets_core'), 
+            'external_invoice_request/static/src/**/*',
         ],
     },
     'installable': True,
